@@ -19,31 +19,35 @@ const restart = document.querySelector('.restart')
 
 const gameboard = (function() {
 
+  function Player(name, mark) {
+    this.name = name
+    this.mark = mark
+  }
+
   const board = [tile1, tile2, tile3, tile4, tile5, tile6, tile7, tile8, tile9]
+  const playerX = new Player('Player 1', 'X')
+  const playerO = new Player('Player 2', 'O')
+  let currentPlayer = playerX
 
-  const placeX = function(tile) {
+  const placeMark = function(tile, mark) {
     if (tile.textContent !== "") {
       return
     } else {
-      tile.textContent = "X"
+      tile.textContent = mark
     }
+    switchPlayers()
   }
 
-  const placeO = function(tile) {
-    if (tile.textContent !== "") {
-      return
+  const switchPlayers = function() {
+    if (currentPlayer == playerX) {
+      currentPlayer = playerO
     } else {
-      tile.textContent = "O"
+      currentPlayer = playerX
     }
   }
 
-  const getCurrentPlayer = function() {
-
-  } 
-
-  const startNewGame = function() {
-    const playerX = Player('Player 1', 'X')
-    const playerO = Player('Player 2', 'O')
+  const getCurrentMark = function() {
+    return currentPlayer.mark
   }
 
   const clearBoard = function() {
@@ -52,23 +56,44 @@ const gameboard = (function() {
     })
   }
 
-  return { placeO, placeX, startNewGame, clearBoard };
+  return { placeMark, clearBoard, getCurrentMark };
 
 }())
 
-const Player = (name, mark) => {
-  const getName = () => name
-  const getMark = () => mark
+tile1.addEventListener('click', (ev) => {
+  gameboard.placeMark(ev.target, gameboard.getCurrentMark())
+})
 
-  return { getName, getMark }
-}
+tile2.addEventListener('click', (ev) => {
+  gameboard.placeMark(ev.target, gameboard.getCurrentMark())
+})
+
+tile3.addEventListener('click', (ev) => {
+  gameboard.placeMark(ev.target, gameboard.getCurrentMark())
+})
+
+tile4.addEventListener('click', (ev) => {
+  gameboard.placeMark(ev.target, gameboard.getCurrentMark())
+})
   
 tile5.addEventListener('click', (ev) => {
-  gameboard.placeO(ev.target)
+  gameboard.placeMark(ev.target, gameboard.getCurrentMark())
+})
+
+tile6.addEventListener('click', (ev) => {
+  gameboard.placeMark(ev.target, gameboard.getCurrentMark())
+})
+
+tile7.addEventListener('click', (ev) => {
+  gameboard.placeMark(ev.target, gameboard.getCurrentMark())
 })
 
 tile8.addEventListener('click', (ev) => {
-  gameboard.placeO(ev.target)
+  gameboard.placeMark(ev.target, gameboard.getCurrentMark())
+})
+
+tile9.addEventListener('click', (ev) => {
+  gameboard.placeMark(ev.target, gameboard.getCurrentMark())
 })
 
 restart.addEventListener('click', () => {
