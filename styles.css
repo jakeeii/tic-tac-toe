@@ -386,7 +386,7 @@ MY CODE */
 
 .page {
   display: grid;
-  grid-template-rows: 1fr 5fr;
+  grid-template-rows: 1.1fr 1fr 5fr .5fr;
   min-height: 100vh;
   min-width: 100vw;
   gap: 20px;
@@ -397,11 +397,34 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 40px;
+}
+
+.announcement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
 }
 
 .content {
   display: flex;
   justify-content: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.restart {
+  padding: 15px 30px;
+  font-size: 20px;
+}
+
+.restart:hover {
+  cursor: pointer;
 }
 
 .board {
@@ -427,4 +450,5 @@ header {
 
 .tile:hover {
   background-color: antiquewhite;
+  cursor: pointer;
 }
