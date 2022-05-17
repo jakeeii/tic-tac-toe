@@ -121,6 +121,18 @@ const gameboard = (function() {
     }
   }
 
+  const isBoardFull = function() {
+    return board.every(isTileFull)
+  }
+
+  const isTileFull = function(tile) {
+    if (tile.textContent != "") {
+      return true
+    } else {
+      return false
+    }
+  }
+
   const isGameOver = function() {
     if (checkXWinner() == true) {
       gameOver = true
@@ -128,12 +140,15 @@ const gameboard = (function() {
     } else if (checkOWinner() == true) {
       gameOver = true
       updateAnnouncement(`${playerO.name} is the winner!`)
+    } else if (isBoardFull() == true) {
+      gameOver = true
+      updateAnnouncement("It's a draw!")
     } else {
-      return
+      return false
     }
   }
 
-  return { placeMark, restartGame, getCurrentMark };
+  return { placeMark, restartGame, getCurrentMark, isBoardFull };
 
 }())
 
