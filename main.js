@@ -148,7 +148,7 @@ const gameboard = (function() {
     }
   }
 
-  return { placeMark, restartGame, getCurrentMark, isBoardFull };
+  return { placeMark, restartGame, getCurrentMark };
 
 }())
 
