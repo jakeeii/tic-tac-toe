@@ -50,7 +50,7 @@ const gameboard = (function() {
   const switchPlayers = function() {
     if (currentPlayer == playerX) {
       currentPlayer = playerO
-      currentPlayerMessage = `It is ${playerO.mark}'s turn.`
+      currentPlayerMessage = `It is ${playerO.mark}'s turn`
     } else {
       currentPlayer = playerX
       currentPlayerMessage = `It is ${playerX.mark}'s turn`
